@@ -1,0 +1,14 @@
+{
+  "name": "PharmaDesk POS",
+  "short_name": "PharmaDesk",
+  "description": "Offline-first pharmacy point of sale",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F4F6F7",
+  "theme_color": "#0E6B5C",
+  "orientation": "any",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
