@@ -46,7 +46,16 @@ async function getStaff(staffId) {
 }
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
-
+app.get('/api/debug', (req, res) => {
+  res.json({
+    hasSupabaseUrl: !!process.env.SUPABASE_URL,
+    hasSupabaseKey: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    hasApiKey: !!process.env.PHARMADESK_API_KEY,
+    hasJwtSecret: !!process.env.PHARMADESK_JWT_SECRET,
+    hasSetupKey: !!process.env.PHARMADESK_SETUP_KEY,
+    supabaseUrlPreview: process.env.SUPABASE_URL ? process.env.SUPABASE_URL.slice(0, 15) + '...' : 'MISSING'
+  });
+});
 app.post('/api/auth/bootstrap-admin', requireApiKey, async (req, res) => {
   if (req.body.setupKey !== SETUP_KEY) return res.status(403).json({ error: 'Bad setup key' });
   const { count } = await supabase.from('credentials').select('*', { count: 'exact', head: true });
